@@ -1,0 +1,53 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="clientsTableCreate" author="Sergei">
+        <preConditions>
+            <not>
+                <tableExists tableName="clients"/>
+            </not>
+        </preConditions>
+        <createTable tableName="clients">
+            <column name="card_number" type="NUMERIC(20,0)">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="points" type="INTEGER"/>
+            <column name="date" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="chequesTableCreate" author="Sergei">
+        <preConditions>
+            <not>
+                <tableExists tableName="cheques"/>
+            </not>
+        </preConditions>
+        <createTable tableName="cheques">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="card_number" type="NUMERIC(20,0)"/>
+            <column name="sum" type="NUMERIC"/>
+            <column name="date" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="chequePositionsTableCreate" author="Sergei">
+        <preConditions>
+            <not>
+                <tableExists tableName="positions"/>
+            </not>
+        </preConditions>
+        <createTable tableName="positions">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="sum" type="NUMERIC"/>
+            <column name="date" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
