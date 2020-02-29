@@ -9,8 +9,8 @@ services:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: passw0rd
       POSTGRES_DB: postgres
-    volume:
-      - ./postgre-db/data:/var/lib/postgresql/data
+#    volumes:
+#      - ./postgre-db/data:/var/lib/postgresql/data
     ports:
       - "5434:5432" # 5434 т.к. 5432 занят локальным Postgre
     restart: always

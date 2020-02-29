@@ -1,2 +1,4 @@
 /.idea/
 /.gradle/
+/das-db/build/
+/das-back/build/

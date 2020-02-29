@@ -1,0 +1,18 @@
+spring:
+  liquibase:
+    change-log: classpath:/liquibase/dbChangeLog.xml
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    # port 5432 or 5434
+    url: jdbc:postgresql://localhost:5434/postgres
+    ##    driver-class-name: org.h2.Driver
+    ##    url: jdbc:h2:mem:test
+    username: user
+    password: passw0rd
+#  h2:
+#    console:
+#      enabled: true
+logging:
+  level:
+    liquibase: INFO

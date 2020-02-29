@@ -46,6 +46,7 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="chequeId" type="BIGINT"/>
             <column name="sum" type="NUMERIC"/>
             <column name="date" type="TIMESTAMP"/>
         </createTable>
