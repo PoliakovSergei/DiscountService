@@ -1,10 +1,10 @@
 package com.sergo.das.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
@@ -12,6 +12,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "clients")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client implements Serializable {
 
     private static final long serialVersionUID = -4415449104007962305L;
@@ -23,5 +25,5 @@ public class Client implements Serializable {
     private Integer points;
 
     @Column
-    private Date date;
+    private LocalDateTime date;
 }

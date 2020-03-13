@@ -2,3 +2,4 @@
 /.gradle/
 /das-db/build/
 /das-back/build/
+/das-db/src/main/resources/postgre-db/data
