@@ -4,9 +4,10 @@ import com.sergo.das.entity.Client;
 import java.util.List;
 
 public interface ClientsService {
-    String addClient(Long card_id);
+    void addClient(Long card_id);
     List<Client> getAll();
 
-    String addPoints(Long clientCardId, Integer addedPoints);
-    String usePoints(Long clientCardId, Integer usedPoints);
+    void addPoints(Long clientCardId, Integer addedPoints);
+    void usePoints(Long clientCardId, Integer usedPoints);
+    Integer getUserPoints(Long clientCardId);
 }

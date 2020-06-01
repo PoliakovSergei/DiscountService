@@ -1,7 +1,9 @@
 package com.sergo.das.service;
 
 import com.sergo.das.entity.Client;
-import com.sergo.das.enums.ResponseCodes;
+import com.sergo.das.exception.ClientAlreadyExistException;
+import com.sergo.das.exception.ClientNotFoundException;
+import com.sergo.das.exception.NotEnoughPointsException;
 import com.sergo.das.repository.ClientsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,34 +19,42 @@ public class ClientsServiceImpl implements ClientsService{
 
     private final ClientsRepository clientsRepository;
 
-    public String addClient(Long cardId) {
-        String responseMessage = ResponseCodes.CLIENT_ADD_SUCCESS.getMessage();
+    @Override
+    public void addClient(Long cardId) {
         if (clientsRepository.getClientByCardNumber(cardId) == null) {
             clientsRepository.save(new Client(cardId, 0, LocalDateTime.now()));
             log.info("Добавлен клиент с ID {}", cardId);
         } else {
-            log.warn("Клиент с ID {} уже существует!", cardId);
-            responseMessage = ResponseCodes.CLIENT_ALREADY_EXISTS.getMessage();
+            log.error("Ошибка при добавлении клиента с ID = {}", cardId);
+            throw new ClientAlreadyExistException(cardId);
         }
-        return responseMessage;
     }
 
+    @Override
     public List<Client> getAll() {
         return clientsRepository.findAll();
     }
 
-    public String addPoints(Long clientCardId, Integer addedPoints) {
-        String responseMessage = ResponseCodes.ADD_POINTS_SUCCESS.getMessage();
+    @Override
+    public void addPoints(Long clientCardId, Integer addedPoints) {
         Client client = clientsRepository.getClientByCardNumber(clientCardId);
+        if (client == null) {
+            log.error("Ошибка при добавлении баллов клиенту с ID = {}", clientCardId);
+            throw new ClientNotFoundException(clientCardId);
+        }
         client.setPoints(client.getPoints() + addedPoints);
         clientsRepository.save(client);
         log.info("Клиенту с ID {} начислено {} баллов. В наличии: {} баллов.",
                 clientCardId, addedPoints, client.getPoints());
-        return responseMessage;
     }
-    public String usePoints(Long clientCardId, Integer usedPoints) {
-        String responseMessage = ResponseCodes.USE_POINTS_SUCCESS.getMessage();
+
+    @Override
+    public void usePoints(Long clientCardId, Integer usedPoints) {
         Client client = clientsRepository.getClientByCardNumber(clientCardId);
+        if (client == null) {
+            log.error("Ошибка при списывании баллов клиента с ID = {}", clientCardId);
+            throw new ClientNotFoundException(clientCardId);
+        }
         if (client.getPoints() >= usedPoints) {
             client.setPoints(client.getPoints() - usedPoints);
             clientsRepository.save(client);
@@ -53,8 +63,16 @@ public class ClientsServiceImpl implements ClientsService{
         } else {
             log.warn("У клиента с ID {} не хватает баллов для списания! В наличии {}, к списанию {}.",
                     clientCardId, client.getPoints(), usedPoints);
-            responseMessage = ResponseCodes.USE_POINTS_FAILED.getMessage();
+            throw new NotEnoughPointsException(clientCardId, client.getPoints(), usedPoints);
         }
-        return responseMessage;
+    }
+
+    @Override
+    public Integer getUserPoints(Long clientCardId) {
+        Client client = clientsRepository.getClientByCardNumber(clientCardId);
+        if (client == null) {
+            throw new ClientNotFoundException(clientCardId);
+        }
+        return client.getPoints();
     }
 }

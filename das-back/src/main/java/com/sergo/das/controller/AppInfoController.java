@@ -1,18 +1,17 @@
 package com.sergo.das.controller;
 
 import com.sergo.das.dto.BaseResponse;
-import org.springframework.http.HttpStatus;
+import com.sergo.das.enums.ResponseCodes;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static com.sergo.das.service.ResponseBuilder.buildResponse;
 
 @RestController
 public class AppInfoController {
     @RequestMapping("/")
-    public BaseResponse appInfo() {
-        return new BaseResponse(
-                HttpStatus.OK,
-                200,
-                "Add some info"
-        );
+    public ResponseEntity<BaseResponse> appInfo() {
+        return buildResponse(ResponseCodes.CLIENT_ALREADY_EXISTS, "Information about service");
     }
 }
