@@ -5,6 +5,7 @@ import com.sergo.das.exception.ClientAlreadyExistException;
 import com.sergo.das.exception.ClientNotFoundException;
 import com.sergo.das.exception.NotEnoughPointsException;
 import com.sergo.das.repository.ClientsRepository;
+import com.sergo.das.service.interfaces.ClientsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ClientsServiceImpl implements ClientsService{
+public class ClientsServiceImpl implements ClientsService {
 
     private final ClientsRepository clientsRepository;
 

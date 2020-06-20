@@ -12,6 +12,7 @@ public enum  ResponseCodes {
     USE_POINTS_SUCCESS(100, "Баллы успешно списаны."),
     GET_POINTS_SUCCESS(100, "Информация о баллах получена."),
     GET_SERVICE_INFO(100, "Запрос информации о сервисе."),
+    REGISTERED_NEW_CHEQUE(100,"Чек успешно добавлен в историю пользователя"),
     USE_POINTS_FAILED(101, "Не хватает баллов."),
     CLIENT_ALREADY_EXISTS(101, "Клиент с указанным номером уже зарегистрирован."),
     CLIENT_NOT_FOUND(101, "Клиент с указанным номером не найден."),

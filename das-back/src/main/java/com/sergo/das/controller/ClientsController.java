@@ -3,7 +3,7 @@ package com.sergo.das.controller;
 import com.sergo.das.dto.BaseResponse;
 import com.sergo.das.entity.Client;
 import com.sergo.das.enums.ResponseCodes;
-import com.sergo.das.service.ClientsService;
+import com.sergo.das.service.interfaces.ClientsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

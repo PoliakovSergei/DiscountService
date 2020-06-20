@@ -1,0 +1,21 @@
+{
+  "name": "das-front",
+  "version": "1.0.0",
+  "description": "Frontend module of das service",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^3.6.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build": "webpack -p",
+    "start-dev": "webpack-dev-server --port 3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Polyakov Sergey",
+  "license": "ISC"
+}

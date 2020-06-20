@@ -3,3 +3,6 @@
 /das-db/build/
 /das-back/build/
 /das-db/src/main/resources/postgre-db/data
+/das-front/node_modules/
+/das-front/dist/
+/das-front/npm-debug.log

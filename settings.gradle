@@ -1,4 +1,5 @@
 rootProject.name = 'DiscountAccumulationService'
 include 'das-back'
 include 'das-db'
+include 'das-front'
 

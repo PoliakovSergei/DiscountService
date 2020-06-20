@@ -1,4 +1,4 @@
-package com.sergo.das.service;
+package com.sergo.das.service.interfaces;
 
 import com.sergo.das.entity.Client;
 import java.util.List;
