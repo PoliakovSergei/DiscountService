@@ -1,0 +1,16 @@
+.custom_button {
+    width: 100px;
+    height:30px;
+    border-radius: 4px;
+    margin:50px;
+
+    &__on {
+        color: #4eff71;
+        background-color: #ccc;
+    }
+
+    &__off {
+        color: #ff0e36;
+        background-color: #ccc;
+    }
+}

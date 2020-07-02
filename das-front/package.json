@@ -2,9 +2,16 @@
   "name": "das-front",
   "version": "1.0.0",
   "description": "Frontend module of das service",
-  "main": "index.js",
-  "dependencies": {},
+  "main": "src/index.jsx",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
     "css-loader": "^3.6.0",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
@@ -13,7 +20,7 @@
   },
   "scripts": {
     "build": "webpack -p",
-    "start-dev": "webpack-dev-server --port 3000",
+    "start-dev": "webpack-dev-server --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Polyakov Sergey",
