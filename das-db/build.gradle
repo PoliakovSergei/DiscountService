@@ -2,7 +2,28 @@ plugins {
     id 'java'
 }
 
+tasks.register("upPostgresContainer") {
+    group = 'Postgres'
+    description = 'Build and up docker container with Postgres DB'
+    doLast {
+        println "[GRADLE TASK] UP POSTGRES CONTAINER"
+        exec {
+            workingDir project.getProjectDir().getPath() + "/src/main/docker/"
+            commandLine 'docker-compose','up', '-d', '--build'
+        }
+    }
+}
+
+tasks.register("downPostgresContainer") {
+    group = 'Postgres'
+    description = 'Build and up docker container with Postgres DB'
+    doLast {
+        println "[GRADLE TASK] STOP POSTGRES CONTAINER"
+        exec {
+            workingDir project.getProjectDir().getPath() + "/src/main/docker/"
+            commandLine 'docker-compose', 'down'
+        }
+    }
+}
 //group 'com.sergo'
 //version '1.0-SNAPSHOT'
-
-//sourceCompatibility = 1.8

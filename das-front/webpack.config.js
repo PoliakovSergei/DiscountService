@@ -4,8 +4,8 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '/dist/',
+        path: path.resolve(__dirname, './public'),
+        publicPath: '/public/',
     },
     devServer: {
         port: 3000,
@@ -20,10 +20,16 @@ module.exports = {
                 use: ["style-loader", "css-loader", "sass-loader"]
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "babel-loader",
+                    options:{
+                        presets:["@babel/preset-env", "@babel/preset-react"],
+                        plugins: [
+                            "@babel/plugin-proposal-class-properties"
+                        ]
+                    }
                 },
             },
         ]
