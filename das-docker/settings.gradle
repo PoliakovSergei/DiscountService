@@ -1,0 +1,3 @@
+rootProject.name = 'das-docker'
+include 'das-db'
+include 'das-ldap'

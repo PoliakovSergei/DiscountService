@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import '../styles/Hello.css'
+import '../styles/Hello.scss';
 
 class Hello extends Component {
     constructor(props) {
@@ -15,10 +15,12 @@ class Hello extends Component {
     }
 
     render() {
-        return <div>
-            <h1>Hello, {this.props.name}!</h1>
-            <p>{this.state.info}</p>
-        </div>;
+        return (
+            <div className="hello_block">
+                <h1>Hello, {this.props.name}!</h1>
+                <p>{this.state.info}</p>
+            </div>
+    );
     }
 }
 

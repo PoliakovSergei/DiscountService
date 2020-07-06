@@ -1,0 +1,23 @@
+tasks.register("upLdapContainer") {
+    group = 'OpenLDAP'
+    description = 'Build and up docker container with OpenLDAP'
+    doLast {
+        println "[GRADLE TASK] UP OpenLDAP CONTAINER"
+        exec {
+            workingDir project.getProjectDir().getPath() + "/src/main/docker/"
+            commandLine 'docker-compose','up', '-d', '--build'
+        }
+    }
+}
+
+tasks.register("downLdapContainer") {
+    group = 'OpenLDAP'
+    description = 'Down docker container with OpenLDAP'
+    doLast {
+        println "[GRADLE TASK] STOP OpenLDAP CONTAINER"
+        exec {
+            workingDir project.getProjectDir().getPath() + "/src/main/docker/"
+            commandLine 'docker-compose', 'down'
+        }
+    }
+}

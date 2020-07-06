@@ -18,7 +18,7 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.10'
     implementation 'org.liquibase:liquibase-core:3.8.4'
     implementation 'org.postgresql:postgresql:42.2.9'
-    implementation project(':das-db')
+    implementation project(':das-docker:das-db')
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
 

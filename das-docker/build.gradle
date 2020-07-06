@@ -1,0 +1,23 @@
+tasks.register("upContainers") {
+    group = 'Docker'
+    description = 'Build and up docker containers'
+    doLast {
+        println "[GRADLE TASK] UP CONTAINERS"
+        exec {
+            workingDir project.getProjectDir().getPath()
+            commandLine 'docker-compose','up', '-d', '--build'
+        }
+    }
+}
+
+tasks.register("downContainers") {
+    group = 'Docker'
+    description = 'Down docker containers'
+    doLast {
+        println "[GRADLE TASK] STOP CONTAINERS"
+        exec {
+            workingDir project.getProjectDir().getPath()
+            commandLine 'docker-compose', 'down'
+        }
+    }
+}

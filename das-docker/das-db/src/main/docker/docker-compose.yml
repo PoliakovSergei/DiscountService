@@ -3,8 +3,8 @@ version: "3.7"
 services:
   db:
     build: postgre-db
-    image: postgre-db:latest
-    container_name: "postgre-db"
+    image: das-postgre-db:latest
+    container_name: "das-postgre-db"
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: passw0rd

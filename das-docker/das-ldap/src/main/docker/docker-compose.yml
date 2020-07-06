@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  ldap:
+    build: openldap
+    image: das-openldap:latest
+    container_name: "das-openldap"
+    ports:
+      - "389:389"
+      - "636:636"
+    restart: always
