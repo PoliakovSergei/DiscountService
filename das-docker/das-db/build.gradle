@@ -1,4 +1,4 @@
-tasks.register("upPostgresContainer") {
+tasks.register("upContainer") {
     group = 'Postgres'
     description = 'Build and up docker container with Postgres DB'
     doLast {
@@ -10,7 +10,7 @@ tasks.register("upPostgresContainer") {
     }
 }
 
-tasks.register("downPostgresContainer") {
+tasks.register("downContainer") {
     group = 'Postgres'
     description = 'Down docker container with Postgres DB'
     doLast {

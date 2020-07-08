@@ -1,23 +1,25 @@
 tasks.register("upContainers") {
     group = 'Docker'
     description = 'Build and up docker containers'
-    doLast {
+    project.getSubprojects().each {
+        finalizedBy it.getName() + ":" + "upContainer"
+    }
+    doFirst {
         println "[GRADLE TASK] UP CONTAINERS"
-        exec {
-            workingDir project.getProjectDir().getPath()
-            commandLine 'docker-compose','up', '-d', '--build'
-        }
+        println project.getName() + " subprojects:"
+        println project.getSubprojects()
     }
 }
 
 tasks.register("downContainers") {
     group = 'Docker'
     description = 'Down docker containers'
-    doLast {
+    project.getSubprojects().each {
+        finalizedBy it.getName() + ":" + "downContainer"
+    }
+    doFirst {
         println "[GRADLE TASK] STOP CONTAINERS"
-        exec {
-            workingDir project.getProjectDir().getPath()
-            commandLine 'docker-compose', 'down'
-        }
+        println project.getName() + " subprojects:"
+        println project.getSubprojects()
     }
 }

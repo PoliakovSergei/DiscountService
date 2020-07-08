@@ -1,4 +1,4 @@
-tasks.register("upLdapContainer") {
+tasks.register("upContainer") {
     group = 'OpenLDAP'
     description = 'Build and up docker container with OpenLDAP'
     doLast {
@@ -10,7 +10,7 @@ tasks.register("upLdapContainer") {
     }
 }
 
-tasks.register("downLdapContainer") {
+tasks.register("downContainer") {
     group = 'OpenLDAP'
     description = 'Down docker container with OpenLDAP'
     doLast {
